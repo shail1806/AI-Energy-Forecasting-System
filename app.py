@@ -133,24 +133,59 @@ def train_model(X_train, y_train, X_test, y_test):
     )
     return model, history
 
+# =========================================================
+# MODEL LOADING / TRAINING
+# =========================================================
+
 st.subheader("🧠 Deep Learning Model")
 
 history = None
+MODEL_PATH = "energy_forecasting_model.keras"
 
 try:
-    model = tf.keras.models.load_model(
-        "energy_forecasting_model.keras",
-        compile=False,
-        safe_mode=False
-    )
-    model.compile(optimizer="adam", loss="mean_squared_error")
-    st.success("✅ Pretrained Model Loaded Successfully!")
+
+    if os.path.exists(MODEL_PATH):
+
+        model = tf.keras.models.load_model(
+            MODEL_PATH,
+            compile=False
+        )
+
+        model.compile(
+            optimizer="adam",
+            loss="mean_squared_error"
+        )
+
+        st.success("✅ Pretrained Model Loaded Successfully!")
+
+    else:
+        raise FileNotFoundError("Model file not found")
 
 except Exception as e:
-    st.warning(f"Model Load Failed: {e}")
+
+    st.warning(f"⚠️ Model Load Failed: {e}")
+
+    # Delete incompatible model
+    if os.path.exists(MODEL_PATH):
+        try:
+            os.remove(MODEL_PATH)
+            st.info("🗑️ Incompatible model removed.")
+        except:
+            pass
+
+    st.info("🚀 Training New Model...")
+
     with st.spinner("Training model..."):
-        model, history = train_model(X_train, y_train, X_test, y_test)
-        model.save("energy_forecasting_model.keras")
+
+        model, history = train_model(
+            X_train,
+            y_train,
+            X_test,
+            y_test
+        )
+
+        model.save(MODEL_PATH)
+
     st.success("✅ Model Trained & Saved Successfully!")
 
 if history:
