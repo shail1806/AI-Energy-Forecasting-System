@@ -39,10 +39,23 @@ background-attachment:fixed;
 [data-testid="stSidebar"]{background-color: rgba(0,0,0,0.7);}
 </style>
 """
-st.markdown(page_bg, unsafe_allow_html=True)
+st.markdown(
+    """
+    <h1 style='color:white !important; text-align:center;'>
+    ⚡ AI-Powered Energy Consumption Forecasting
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
 
-st.title("⚡ AI-Powered Energy Consumption Forecasting")
-st.markdown("### Industry-Level Deep Learning Forecasting Dashboard")
+st.markdown(
+    """
+    <h3 style='color:white !important; text-align:center;'>
+    Industry-Level Deep Learning Forecasting Dashboard
+    </h3>
+    """,
+    unsafe_allow_html=True
+)
 
 @st.cache_data
 def load_data():
