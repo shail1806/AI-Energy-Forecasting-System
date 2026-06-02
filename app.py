@@ -118,23 +118,8 @@ div[role="option"] {
 
 </style>
 """
-st.markdown(
-    """
-    <h1 style='color:white !important; text-align:center;'>
-    ⚡ AI-Powered Energy Consumption Forecasting
-    </h1>
-    """,
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    """
-    <h3 style='color:white !important; text-align:center;'>
-    Industry-Level Deep Learning Forecasting Dashboard
-    </h3>
-    """,
-    unsafe_allow_html=True
-)
+st.title("⚡ AI-Powered Energy Consumption Forecasting")
+st.markdown("### Industry-Level Deep Learning Forecasting Dashboard")
 
 @st.cache_data
 def load_data():
