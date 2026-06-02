@@ -28,15 +28,94 @@ st.set_page_config(
 
 page_bg = """
 <style>
-html, body, [class*="css"] {color:white !important;}
+
+/* Background */
 [data-testid="stAppViewContainer"]{
-background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
-url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+    background-image:
+    linear-gradient(
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.75)
+    ),
+    url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-[data-testid="stSidebar"]{background-color: rgba(0,0,0,0.7);}
+
+/* Sidebar */
+[data-testid="stSidebar"]{
+    background-color: rgba(0,0,0,0.7);
+}
+
+/* Force ALL text to white */
+html,
+body,
+p,
+span,
+div,
+label,
+small,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+a,
+[data-testid="stMarkdownContainer"],
+[data-testid="stMetricValue"],
+[data-testid="stMetricLabel"] {
+    color: white !important;
+}
+
+/* Streamlit titles */
+.stApp h1,
+.stApp h2,
+.stApp h3,
+.stApp h4,
+.stApp h5,
+.stApp h6 {
+    color: white !important;
+}
+
+/* Metrics */
+[data-testid="metric-container"] {
+    color: white !important;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Buttons */
+.stButton > button {
+    color: white !important;
+}
+
+/* Sidebar text */
+[data-testid="stSidebar"] * {
+    color: white !important;
+}
+
+/* Selectbox text */
+.stSelectbox label,
+.stSlider label {
+    color: white !important;
+}
+
+/* Dropdown options */
+.stSelectbox div[data-baseweb="select"] > div {
+    color: black !important;
+    background-color: white !important;
+}
+
+div[role="option"] {
+    color: black !important;
+}
+
 </style>
 """
 st.markdown(
