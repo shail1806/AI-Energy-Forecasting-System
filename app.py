@@ -67,7 +67,7 @@ sequence_length = st.sidebar.slider("Sequence Length", 12, 72, 24)
 forecast_hours = st.sidebar.slider("Forecast Hours", 1, 24, 6)
 
 st.subheader("📂 Dataset Preview")
-st.dataframe(df.head(), width="stretch")
+st.dataframe(df.head(), use_container_width=True)
 
 st.subheader("📊 Energy KPIs")
 c1, c2, c3, c4 = st.columns(4)
